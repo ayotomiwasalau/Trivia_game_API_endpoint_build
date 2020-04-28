@@ -96,7 +96,7 @@ The API will return three types of errors:
 #### GET /categories
 General: Returns a list categories.
 
-* Sample: curl http://127.0.0.1:5000/categories
+* Sample: ```curl http://127.0.0.1:5000/categories```
 
 ```bash
   {
@@ -119,7 +119,7 @@ General:
 * Results are paginated in groups of 10.
 * Also returns list of categories and total number of questions.
 
-* Sample: curl http://127.0.0.1:5000/questions
+* Sample: ```curl http://127.0.0.1:5000/questions```
 ```bash
   {
       "categories": {
@@ -213,7 +213,7 @@ General:
 
 * Deletes a question by id using url parameters.
 * Returns id of deleted question upon success.
-* Sample: curl http://127.0.0.1:5000/questions/6 -X DELETE
+* Sample: ```curl http://127.0.0.1:5000/questions/6 -X DELETE```
 ```bash
   {
       "deleted": 6, 
@@ -231,7 +231,7 @@ General:
 * Creates a new question using JSON request parameters.
 * Returns JSON object with newly created question, as well as paginated questions.
 
-* Sample: curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": "Which US state contains an area known as the Upper Penninsula?", "answer": "Michigan", "difficulty": 3, "category": "3" }'
+* Sample: ```curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": "Which US state contains an area known as the Upper Penninsula?", "answer": "Michigan", "difficulty": 3, "category": "3" }'```
 ```bash
   {
       "created": 173, 
@@ -319,7 +319,7 @@ General:
 
 * Searches for questions using search term in JSON request parameters.
 * Returns JSON object with paginated matching questions.
-* Sample: curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d '{"searchTerm": "which"}'
+* Sample: ```curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d '{"searchTerm": "which"}'```
 ```bash
   {
       "questions": [
@@ -390,7 +390,7 @@ General:
 * Gets questions by category id using url parameters.
 * Returns JSON object with paginated matching questions.
 
-* Sample: curl http://127.0.0.1:5000/categories/1/questions
+* Sample: ```curl http://127.0.0.1:5000/categories/1/questions```
 ```bash
   {
       "current_category": "Science", 
@@ -429,7 +429,7 @@ General:
 * Uses JSON request parameters of category and previous questions.
 * Returns JSON object with random question not among previous questions.
 
-* Sample: curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [20, 21], "quiz_category": {"type": "Science", "id": "1"}}'
+* Sample: ```curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [20, 21], "quiz_category": {"type": "Science", "id": "1"}}'```
 ```bash
   {
       "question": {
@@ -443,6 +443,7 @@ General:
   }
 ```
 
-Authors
+##### Authors
 Ayotomiwa Salau authored the API (__init__.py), test suite (test_flaskr.py), some component files (FormView.js, QuestionView.js, Quizview.js) in the front end and this README.
+
 All other project files, including the models and frontend, were created by Udacity as a project template for the Full Stack Web Developer Nanodegree.
