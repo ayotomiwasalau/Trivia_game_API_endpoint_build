@@ -79,12 +79,13 @@ Getting Started
 * Error Handling
 
 Errors are returned as JSON in the following format:
-
+```bash
 {
     "success": False,
     "error": 404,
     "message": "resource not found"
 }
+```
 
 The API will return three types of errors:
 
