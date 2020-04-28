@@ -77,6 +77,7 @@ Getting Started
 * Base URL: Currently this application is only hosted locally. The backend is hosted at http://127.0.0.1:5000/
 * Authentication: This version does not require authentication or API keys.
 * Error Handling
+
 Errors are returned as JSON in the following format:
 
 {
@@ -84,17 +85,18 @@ Errors are returned as JSON in the following format:
     "error": 404,
     "message": "resource not found"
 }
+
 The API will return three types of errors:
 
-400 – bad request
-404 – resource not found
-422 – unprocessable
+* 400 – bad request
+* 404 – resource not found
+* 422 – unprocessable
 
 ### Endpoints
 #### GET /categories
 General: Returns a list categories.
 
-Sample: curl http://127.0.0.1:5000/categories
+* Sample: curl http://127.0.0.1:5000/categories
 
 ```bash
   {
@@ -117,7 +119,7 @@ General:
 * Results are paginated in groups of 10.
 * Also returns list of categories and total number of questions.
 
-Sample: curl http://127.0.0.1:5000/questions
+* Sample: curl http://127.0.0.1:5000/questions
 ```bash
   {
       "categories": {
@@ -211,7 +213,7 @@ General:
 
 * Deletes a question by id using url parameters.
 * Returns id of deleted question upon success.
-Sample: curl http://127.0.0.1:5000/questions/6 -X DELETE
+* Sample: curl http://127.0.0.1:5000/questions/6 -X DELETE
 ```bash
   {
       "deleted": 6, 
@@ -229,7 +231,7 @@ General:
 * Creates a new question using JSON request parameters.
 * Returns JSON object with newly created question, as well as paginated questions.
 
-Sample: curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": "Which US state contains an area known as the Upper Penninsula?", "answer": "Michigan", "difficulty": 3, "category": "3" }'
+* Sample: curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": "Which US state contains an area known as the Upper Penninsula?", "answer": "Michigan", "difficulty": 3, "category": "3" }'
 ```bash
   {
       "created": 173, 
@@ -317,7 +319,7 @@ General:
 
 * Searches for questions using search term in JSON request parameters.
 * Returns JSON object with paginated matching questions.
-Sample: curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d '{"searchTerm": "which"}'
+* Sample: curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d '{"searchTerm": "which"}'
 ```bash
   {
       "questions": [
@@ -388,7 +390,7 @@ General:
 * Gets questions by category id using url parameters.
 * Returns JSON object with paginated matching questions.
 
-Sample: curl http://127.0.0.1:5000/categories/1/questions
+* Sample: curl http://127.0.0.1:5000/categories/1/questions
 ```bash
   {
       "current_category": "Science", 
@@ -427,7 +429,7 @@ General:
 * Uses JSON request parameters of category and previous questions.
 * Returns JSON object with random question not among previous questions.
 
-Sample: curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [20, 21], "quiz_category": {"type": "Science", "id": "1"}}'
+* Sample: curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [20, 21], "quiz_category": {"type": "Science", "id": "1"}}'
 ```bash
   {
       "question": {
