@@ -78,7 +78,7 @@ class QuestionView extends Component {
 
   submitSearch = (searchTerm) => {
     $.ajax({
-      url: `/questions`, //TODO: update request URL
+      url: `/questions/search`, //TODO: update request URL
       type: "POST",
       dataType: 'json',
       contentType: 'application/json',
@@ -101,11 +101,11 @@ class QuestionView extends Component {
     })
   }
 
-  questionAction = (id) => (action) => {
+  questionAction = (quetion_id) => (action) => {
     if(action === 'DELETE') {
       if(window.confirm('are you sure you want to delete the question?')) {
         $.ajax({
-          url: `/questions/${id}`, //TODO: update request URL
+          url: `/questions/${question_id}`, //TODO: update request URL
           type: "DELETE",
           success: (result) => {
             this.getQuestions();
