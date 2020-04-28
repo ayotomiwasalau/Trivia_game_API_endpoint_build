@@ -1,4 +1,4 @@
-# Full Stack Trivia API Project
+# Trivia API Project
 This project is a game where users test their knowledge answering trivia questions. The task for the project was to create an API and test suite for implementing the following functionality:
 
 1) Display questions - both all questions and by category. Questions should show the question, category and difficulty rating by default and can show/hide the answer. 
@@ -16,16 +16,16 @@ Developers using this project should already have Python3, pip, node, and npm in
 #### Frontend Dependencies
 This project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the frontend directory of this repository. After cloning, open your terminal and run:
 
-'''bash
+```bash
 npm install
-'''
+```
 
 #### Backend Dependencies
 Once you have your virtual environment setup and running, install dependencies by naviging to the /backend directory and running:
 
-'''bash
+```bash
 pip install -r requirements.txt
-'''
+```
 ##### Key Dependencies
 
 - [Flask](http://flask.pocoo.org/)  is a lightweight backend microservices framework. Flask is required to handle requests and responses.
@@ -45,30 +45,30 @@ The frontend app was built using create-react-app. In order to run the app in de
 Open http://localhost:3000 to view it in the browser. The page will reload if you make edits.
 
 
-'''bash
+```bash
 npm start
-'''
+```
 
 ### Running the Server
 From within the backend directory first ensure you are working using your created virtual environment.
 
 To run the server, execute:
 
-'''bash
+```bash
 export FLASK_APP=flaskr
 export FLASK_ENV=development
 flask run
-'''
+```
 
 ## Testing
 To run the tests, run
 
-'''bash
+```bash
 dropdb trivia_test
 createdb trivia_test
 psql trivia_test < trivia.psql
 python test_flaskr.py
-'''
+```
 
 Omit the dropdb command the first time you run tests.
 
@@ -96,7 +96,7 @@ General: Returns a list categories.
 
 Sample: curl http://127.0.0.1:5000/categories
 
-'''bash
+```bash
   {
       "categories": {
           "1": "Science", 
@@ -108,7 +108,7 @@ Sample: curl http://127.0.0.1:5000/categories
       }, 
       "success": true
   }
-'''
+```
 
 #### GET /questions
 General:
@@ -118,7 +118,7 @@ General:
 * Also returns list of categories and total number of questions.
 
 Sample: curl http://127.0.0.1:5000/questions
-'''bash
+```bash
   {
       "categories": {
           "1": "Science", 
@@ -203,7 +203,7 @@ Sample: curl http://127.0.0.1:5000/questions
       "success": true, 
       "total_questions": 19
   }
-  '''
+  ```
 
 
 #### DELETE /questions/<int:id>
@@ -212,12 +212,12 @@ General:
 * Deletes a question by id using url parameters.
 * Returns id of deleted question upon success.
 Sample: curl http://127.0.0.1:5000/questions/6 -X DELETE
-'''bash
+```bash
   {
       "deleted": 6, 
       "success": true
   }
-'''
+```
 
 #### POST /questions
 This endpoint either creates a new question or returns search results.
@@ -230,7 +230,7 @@ General:
 * Returns JSON object with newly created question, as well as paginated questions.
 
 Sample: curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": "Which US state contains an area known as the Upper Penninsula?", "answer": "Michigan", "difficulty": 3, "category": "3" }'
-'''bash
+```bash
   {
       "created": 173, 
       "question_created": "Which US state contains an area known as the Upper Penninsula?", 
@@ -310,7 +310,7 @@ Sample: curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: applicati
       "total_questions": 20
   }
 
-'''
+```
 
 If search term is included in request:
 General:
@@ -318,7 +318,7 @@ General:
 * Searches for questions using search term in JSON request parameters.
 * Returns JSON object with paginated matching questions.
 Sample: curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d '{"searchTerm": "which"}'
-'''bash
+```bash
   {
       "questions": [
           {
@@ -381,7 +381,7 @@ Sample: curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: ap
       "success": true, 
       "total_questions": 18
   }
-'''
+```
 #### GET /categories/<int:id>/questions
 General:
 
@@ -389,7 +389,7 @@ General:
 * Returns JSON object with paginated matching questions.
 
 Sample: curl http://127.0.0.1:5000/categories/1/questions
-'''bash
+```bash
   {
       "current_category": "Science", 
       "questions": [
@@ -418,7 +418,7 @@ Sample: curl http://127.0.0.1:5000/categories/1/questions
       "success": true, 
       "total_questions": 18
   }
-'''
+```
 
 #### POST /quizzes
 General:
@@ -428,7 +428,7 @@ General:
 * Returns JSON object with random question not among previous questions.
 
 Sample: curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [20, 21], "quiz_category": {"type": "Science", "id": "1"}}'
-'''bash
+```bash
   {
       "question": {
           "answer": "Blood", 
@@ -439,7 +439,7 @@ Sample: curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application
       }, 
       "success": true
   }
-'''
+```
 
 Authors
 Ayotomiwa Salau authored the API (__init__.py), test suite (test_flaskr.py), some component files (FormView.js, QuestionView.js, Quizview.js) in the front end and this README.
