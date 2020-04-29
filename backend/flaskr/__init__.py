@@ -44,17 +44,18 @@ def create_app(test_config=None):
   An endpoint to handle GET requests 
   for all available categories.
   '''
-  @app.route('/categories')
+  @app.route('/categories', methods=['GET'])
   def get_categories():
     '''
-    Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
+    Fetches a dictionary of categories in which the keys are the ids
+    and the value is the corresponding string of the category
     '''
     selection = Category.query.order_by(Category.id).all()
 
 
     category_dict = {}
     for category in selection:
-      category_dict['id'] = category.type
+      category_dict[category.id] = category.type
 
   
     return jsonify({
@@ -80,11 +81,12 @@ def create_app(test_config=None):
   @app.route('/questions')
   def get_questions():
     '''
-    Fetches questions for the player, the question contains the id, question, category and difficulty.
+    Fetches questions for the player, the question contains
+    the id, question, category and difficulty.
     '''
     
     selection = Question.query.all()
-    current_questions =paginate_questions(request, selection)
+    current_questions = paginate_questions(request, selection)
 
     categories = Category.query.all()
     categories_dict = {}
@@ -154,7 +156,7 @@ def create_app(test_config=None):
   @app.route('/questions', methods = ['POST'])
   def add_questions():
 
-    """this function enable one add questions to the database"""
+    '''this function enable one add questions to the database'''
 
     body = request.get_json()
 
@@ -195,7 +197,7 @@ def create_app(test_config=None):
   @app.route('/questions/search', methods=['POST'])
   def search_questions():
 
-    """this function retrieves question by a search on a string""" 
+    '''this function retrieves question by a search on a string''' 
     body = request.get_json()
     print(body)
 
@@ -222,18 +224,19 @@ def create_app(test_config=None):
       abort(404)
 
 
-   
-  # A GET endpoint to get questions based on category. 
+  ''' 
+  A GET endpoint to get questions based on category. 
 
-  # TEST: In the "List" tab / main screen, clicking on one of the 
-  # categories in the left column will cause only questions of that 
-  # category to be shown. 
+  TEST: In the "List" tab / main screen, clicking on one of the 
+  categories in the left column will cause only questions of that 
+  category to be shown. 
+  '''
 
   @app.route('/categories/<int:id>/questions', methods = ['GET'])
 
   def get_question_by_category(id):
 
-    """this function get questions based on category"""
+    '''this function get questions based on category'''
 
     try:
 
@@ -247,8 +250,8 @@ def create_app(test_config=None):
 
 
       return jsonify({
-        'success': True,
-        'question': paginated_question,
+        'success': True, 
+        'questions': paginated_question, 
         'current_category': category.type
         })
 
@@ -304,20 +307,20 @@ def create_app(test_config=None):
 
 
       #check if it has been shown before
-      def check_if_shownb4(question):
-
-        shownb4=False
+      def check_if_shownbefore(question):
+        
+        shownbefore=False
         for i in previous_questions:
           if (i == question.id):
-            shownb4 = True
+            shownbefore = True
 
-        return shownb4
+        return shownbefore
 
       question = get_random_question()
 
       print(question.format())
 
-      while(check_if_shownb4(question)):
+      while(check_if_shownbefore(question)):
         question = get_random_question()
 
 

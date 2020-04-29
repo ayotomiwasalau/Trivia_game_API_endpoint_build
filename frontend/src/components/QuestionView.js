@@ -60,7 +60,7 @@ class QuestionView extends Component {
 
   getByCategory= (id) => {
     $.ajax({
-      url: `/categories/${id}/questions`, //TODO: update request URL
+      url: `/categories/${id}/questions`, //TODO: update request URL /categories/<int:id>/questions'
       type: "GET",
       success: (result) => {
         this.setState({
@@ -101,7 +101,7 @@ class QuestionView extends Component {
     })
   }
 
-  questionAction = (quetion_id) => (action) => {
+  questionAction = (question_id) => (action) => {
     if(action === 'DELETE') {
       if(window.confirm('are you sure you want to delete the question?')) {
         $.ajax({
